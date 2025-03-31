@@ -50,7 +50,7 @@ forge verify-contract \
 TESTNET_ALLOCATION_MANAGER_ADDRESS=0x78469728304326CBc65f8f95FA756B0B73164462
 
 # First, create the JSON string (remove newlines and extra spaces)
-METADATA_URI='{"name":"TinyAVS","website":"tooTinyForAURL","description":"Absolute smallest AVS possible","logo":"http://github.com/logo.png","twitter":"https://twitter.com/avs"}'
+METADATA_URI='{"name":"TinyAVS","website":"tooTinyForAURL","description":"Absolute smallest AVS possible","logo":"https://github.com/wesfloyd/tiny-avs/blob/main/assets/tinyavs.png?raw=true","twitter":"https://x.com/weswfloyd"}'
 
 # URL encode the JSON string
 ENCODED_METADATA=$(echo -n "$METADATA_URI" | jq -sRr @uri)
@@ -64,7 +64,6 @@ cast send \
     $DEPLOYED_CONTRACT_ADDRESS \
     "$ENCODED_METADATA"
 
-updateAVSMetadataURI
 
 ```
 
