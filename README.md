@@ -28,6 +28,20 @@ cd contracts/
 cp .env.example .env
 source .env
 forge script script/TinyAVS.s.sol:DeployTinyAVS --rpc-url https://ethereum-holesky.publicnode.com --broadcast --private-key $HOLESKY_PRIVATE_KEY
+
+
+# Parse the deployed contract address from the broadcast output
+DEPLOYED_CONTRACT_ADDRESS=$(cat broadcast/TinyAVS.s.sol/17000/run-latest.json | jq -r '.transactions[0].contractAddress')
+export DEPLOYED_CONTRACT_ADDRESS
+echo "Deployed contract address: $DEPLOYED_CONTRACT_ADDRESS"
+
+forge verify-contract \
+    --chain-id 17000 \
+    --compiler-version v0.8.12 \
+    --watch \
+    $DEPLOYED_CONTRACT_ADDRESS \
+    src/TinyAVS.sol:TinyAVS \
+    --etherscan-api-key $ETHERSCAN_API_KEY
 ```
 
 

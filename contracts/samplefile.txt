@@ -1,0 +1,9 @@
+
+##### holesky
+✅  [Success] Hash: 0xeaa21c6fc41c4040a9c54d9fc711ce2491c5343102b66750848eddf772bdf1e3
+Contract Address: 0x29951B8911383A89e19694eAb2DB685a89BA4362
+Block: 3590189
+Paid: 0.000000125846521151 ETH (125359 gas * 0.001003889 gwei)
+
+✅ Sequence #1 on holesky | Total Paid: 0.000000125846521151 ETH (125359 gas * avg 0.001003889 gwei)
+
