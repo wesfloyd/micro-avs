@@ -12,3 +12,4 @@ docs/
 
 # Dotenv file
 .env
+# Add this .env file to .gitignore to keep your private key secure
