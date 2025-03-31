@@ -1,10 +1,16 @@
 # Tiny AVS
 
-Smallest possible deployable AVS
+<img src="assets/tinyavs.png" width="300"/>
+
+Goals:
+- Smallest possible deployable AVS.
+- First AVS to slash Operator on Mainnet (eta April'ish).
+
+Inspired by [tinygrad](https://github.com/tinygrad/tinygrad) / micrograd
 
 ## Prerequisites:
 
-* [Foundry](https://book.getfoundry.sh/getting-started/installation) - Install via `curl -L https://foundry.paradigm.xyz | bash` then run `foundryup`
+* [Foundry](https://book.getfoundry.sh/getting-started/installation)
 
 ## Local Devnet Instructions
 
@@ -20,9 +26,6 @@ cd contracts/
 ```
 
 ## Holesky Instructions
-
-
-
 ```bash
 cd contracts/
 cp .env.example .env
@@ -37,17 +40,38 @@ echo "Deployed contract address: $DEPLOYED_CONTRACT_ADDRESS"
 
 forge verify-contract \
     --chain-id 17000 \
-    --compiler-version v0.8.12 \
     --watch \
     $DEPLOYED_CONTRACT_ADDRESS \
     src/TinyAVS.sol:TinyAVS \
-    --etherscan-api-key $ETHERSCAN_API_KEY
+    --etherscan-api-key $ETHERSCAN_API_KEY -v
+
+# Register this AVS with AllocationManager
+
+TESTNET_ALLOCATION_MANAGER_ADDRESS=0x78469728304326CBc65f8f95FA756B0B73164462
+
+# First, create the JSON string (remove newlines and extra spaces)
+METADATA_URI='{"name":"TinyAVS","website":"tooTinyForAURL","description":"Absolute smallest AVS possible","logo":"http://github.com/logo.png","twitter":"https://twitter.com/avs"}'
+
+# URL encode the JSON string
+ENCODED_METADATA=$(echo -n "$METADATA_URI" | jq -sRr @uri)
+
+# Call the contract
+cast send \
+    --rpc-url https://ethereum-holesky.publicnode.com \
+    --private-key $HOLESKY_PRIVATE_KEY \
+    $TESTNET_ALLOCATION_MANAGER_ADDRESS \
+    "updateAVSMetadataURI(address,string)" \
+    $DEPLOYED_CONTRACT_ADDRESS \
+    "$ENCODED_METADATA"
+
+updateAVSMetadataURI
+
 ```
 
 
-
-
 todo: add updateAVSMetadata call
+
+
 
 ## Roadmap
 
