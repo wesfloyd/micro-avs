@@ -1,16 +1,14 @@
 # Tiny AVS
 
-A lightweight implementation of Amazon's Alexa Voice Service.
+Smallest possible deployable AVS
 
-## Getting Started
+## Instructions
 
-Instructions on how to set up and run the project will go here.
 
-## Features
 
-* Feature 1
-* Feature 2
+## Roadmap
 
-## License
+* Add Operator registration script
+* Add staker address generation, staking and delegation script
+* Add slashing
 
-This project is licensed under the MIT License - see the LICENSE file for details.
