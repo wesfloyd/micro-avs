@@ -1,9 +1,7 @@
-# Tiny AVS
-
-<img src="assets/tinyavs.png" width="300"/>
+# Micro AVS
 
 Goals:
-- Smallest possible deployable AVS.
+- Smallest possible deployable AVS that does **Not** use EigenLayer middleware deployment.
 - First AVS to slash Operator on Mainnet (eta April'ish).
 
 Inspired by [tinygrad](https://github.com/tinygrad/tinygrad) / micrograd
